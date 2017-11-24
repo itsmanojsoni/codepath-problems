@@ -1,0 +1,27 @@
+public class Solution {
+	// DO NOT MODIFY THE LIST. IT IS READ ONLY
+	public int kthsmallest(final List<Integer> a, int k) {
+	    // store the smallest K elements array in the list
+	    List<Integer> smallElementArray = new ArrayList<>();
+	    
+	    for (int i = 0; i < k; i++) {
+	        smallElementArray.add(a.get(i));
+	    }
+	    
+	    Collections.sort(smallElementArray);
+	    
+	    for (int i = k; i < a.size(); i++) {
+	        
+	        if (a.get(i) < smallElementArray.get(k-1)) {
+	            smallElementArray.set(k-1,a.get(i));  
+	            Collections.sort(smallElementArray);
+	        }
+	        
+	    }
+	    
+	    return smallElementArray.get(k-1);
+	    
+	    
+	    
+	}
+}
