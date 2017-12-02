@@ -1,0 +1,19 @@
+public class Solution {
+	public int isPalindrome(String a) {
+	    
+	     a = a.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        int startIndex = 0;
+        int endIndex = a.length() - 1;
+        
+        while (startIndex < endIndex) {
+            if (a.charAt(startIndex) != a.charAt(endIndex)) {
+                return 0;
+            }
+            startIndex++;
+            endIndex--;
+        }
+        return 1;
+    }
+	
+}
