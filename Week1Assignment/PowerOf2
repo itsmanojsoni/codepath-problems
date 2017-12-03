@@ -1,0 +1,17 @@
+public class Solution {
+	public int power(String a) {
+	    
+	if (a == null || a.isEmpty()) {
+        return 0;
+    }
+
+   java.math.BigInteger number = new  java.math.BigInteger(a);
+    if(number.compareTo(java.math.BigInteger.ONE)==0 
+    || number.compareTo(java.math.BigInteger.ZERO)==0)return 0;
+    for(int i=0;i<number.bitLength()-1;i++){
+        if(number.testBit(i))return 0;
+    }
+    return number.testBit(number.bitLength()-1)?1:0;
+       
+	}
+}
