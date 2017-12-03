@@ -6,5 +6,6 @@ Problems Solved
 5. Arrays: Noble Integer
 6. Arrays: First Missing Integer
 7. String : Power of 2 
+8. String : atoi
 
 
