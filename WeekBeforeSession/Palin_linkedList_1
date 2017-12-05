@@ -1,0 +1,24 @@
+public class Solution {
+    public int lPalin(ListNode A) {
+        
+        ListNode temp = A;
+        Stack<Integer> stack = new Stack<>();
+        while( temp != null) {
+            stack.push(temp.val);
+            temp  = temp.next;
+        }
+        
+        ListNode root = A;
+        
+        while (root != null) {
+            
+            if (root.val != stack.pop()) {
+                return 0;
+            } 
+            root = root.next;
+        }
+        
+        return 1;
+        
+    }
+}
