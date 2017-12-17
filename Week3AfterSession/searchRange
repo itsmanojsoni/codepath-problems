@@ -1,0 +1,53 @@
+public class Solution {
+	// DO NOT MODIFY THE LIST
+	public ArrayList<Integer> searchRange(final List<Integer> a, int b) {
+	    
+	    ArrayList<Integer> result = new ArrayList<Integer>();
+        
+        int start = 0;
+        int end = a.size() - 1;
+        int mid = 0;
+        int rStart = -1;
+        
+        while(start < end){
+            mid = start +  (end - start)/2;            
+            if(b > a.get(mid)) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+        
+        int lowest;
+        
+        if(b != a.get(start)){
+            result.add(-1);
+            result.add(-1);
+            return result;
+        } else {
+            lowest = start;
+        }
+        
+        start = 0;
+        end = a.size() -1;
+        while(start < end) {
+            mid = start + (end - start)/2;
+            if(a.get(mid) < b + 1) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+        
+        int highest = 0;
+        if(a.get(start) == b) {
+            highest = start;
+        } else {
+            highest = start - 1;
+        }
+    
+        result.add(lowest);
+        result.add(highest);
+        return result;
+	}
+}

@@ -1,0 +1,22 @@
+public class Solution {
+    private ArrayList<Integer> nodeList = new ArrayList<>();
+    public int kthsmallest(TreeNode root, int k) {
+     
+        inOrdrTraversal(root);  
+        
+        return nodeList.get(k-1);
+        
+    }
+    
+    private void inOrdrTraversal (TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        
+        inOrdrTraversal (root.left);
+        nodeList.add(root.val);
+        inOrdrTraversal (root.right);
+    }
+    
+    
+}
