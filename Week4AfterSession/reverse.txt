@@ -1,0 +1,14 @@
+public class Solution {
+	public long reverse(long a) {
+	    
+	    long reverseNum = 0;
+        int count = 31;
+        while (a > 0) {
+            reverseNum = (reverseNum | ((a & 1) << count));
+            count--;
+            a = a >> 1;
+        }
+
+        return reverseNum;
+	}
+}
