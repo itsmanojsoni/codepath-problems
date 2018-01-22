@@ -1,0 +1,26 @@
+public class Solution {
+    public ArrayList<String> generateParenthesis(int A) {
+        ArrayList<String> result = new ArrayList<String>();
+        combination(result, "", A, A);
+        return result;
+    }
+    
+    public void combination(ArrayList<String> result, String s, 
+        int open, int close) {
+        if(open > close)
+            return;
+     
+        if(open==0 && close==0){
+            result.add(s);
+            return;
+        }
+     
+        if(open > 0){
+            combination(result, s+"(", open-1, close);
+        }
+     
+        if(close > 0){
+            combination(result, s+")", open, close-1);
+        }
+    }
+}

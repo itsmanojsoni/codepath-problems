@@ -1,0 +1,57 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> subsetsWithDup(ArrayList<Integer> A) {
+        
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        
+        if (A == null || A.size() == 0) {
+            result.add(new ArrayList<Integer>());
+            return result;
+        }
+            
+        Collections.sort(A);
+    
+        HashSet<ArrayList<Integer>> output = new HashSet<>();
+        for (int i = 0; i < A.size(); i++) {
+            HashSet<ArrayList<Integer>> temp = new HashSet<>();
+            for (ArrayList<Integer> list : output) {
+                if (!temp.contains(list)) {
+                    temp.add(new ArrayList<>(list));
+                }
+            }
+
+            for (ArrayList<Integer> list : temp) {
+                list.add(A.get(i));
+            }
+
+            ArrayList<Integer> single = new ArrayList<>();
+            single.add(A.get(i));
+            temp.add(single);
+            
+            for (ArrayList<Integer> list : temp) {
+                if (!output.contains(list)) {
+                    output.add(new ArrayList<>(list));
+                }
+            }
+        }
+        
+        output.add(new ArrayList<Integer>());
+        
+        for (ArrayList<Integer> list : output) {
+            result.add(new ArrayList<>(list));
+        }
+
+        Collections.sort(result, new Comparator<ArrayList<Integer>>() {
+            @Override
+            public int compare(ArrayList<Integer> a, ArrayList<Integer> b) {
+                for (int i = 0; i < Math.min(a.size(), b.size()); i++) {
+                    int cmp = Integer.compare(a.get(i), b.get(i));
+                    if (cmp != 0)
+                        return cmp;
+                }
+                return Integer.compare(a.size(), b.size());
+            }
+        });
+
+        return result;
+    }
+}
