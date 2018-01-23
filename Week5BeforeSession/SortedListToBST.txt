@@ -1,0 +1,44 @@
+public class Solution {
+   static ListNode curr;
+
+    public TreeNode sortedListToBST(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        curr = head;
+        int len = getLength(head);
+        return sortedListToBST(0, len - 1);
+    }
+
+    // get list length
+    public int getLength(ListNode head) {
+        int len = 0;
+        ListNode curr = head;
+
+        while (curr != null) {
+            len++;
+            curr = curr.next;
+        }
+        return len;
+    }
+
+    // build tree bottom-up
+    public TreeNode sortedListToBST(int start, int end) {
+        if (start > end)
+            return null;
+
+        // mid
+        int mid = (start + end) / 2;
+
+        TreeNode left = sortedListToBST(start, mid - 1);
+        TreeNode root = new TreeNode(curr.val);
+        curr = curr.next;
+        TreeNode right = sortedListToBST(mid + 1, end);
+
+        root.left = left;
+        root.right = right;
+
+        return root;
+    }
+}
