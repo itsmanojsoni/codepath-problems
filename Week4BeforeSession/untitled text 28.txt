@@ -1,0 +1,37 @@
+1. Clone Graph
+2. Black
+3. 
+
+
+Dyanamic Programming
+1. Adjacent
+2. Books. java seems pretty easy
+3. Data Structures.java also seems okay
+4. MaxPathTree seems pretty easy too
+5. Stocks2.java seems pretty easy too [Do]
+6. Stocks1.java seems good [Do]
+7. Unique Tree Seems pretty easy [Do]
+
+
+
+"inventories_choices": [
+                                {
+                                    "price_currency": "USD",
+                                    "price": "3.000000",
+                                    "place_uuid": "681a2976-f1f6-4d34-84c3-3aba0c16dffc",
+                                    "nixed_until": "2018-01-27T08:00:00.000000Z",
+                                    "is_available": true,
+                                    "inventory_uuid": "5d17bce4-972d-4ccb-9fec-329fb730fa71"
+                                }
+                            ]
+
+
+{
+    "inventories_choices": [
+      {
+        "inventory_uuid": "5d17bce4-972d-4ccb-9fec-329fb730fa71",
+        "place_uuid": "681a2976-f1f6-4d34-84c3-3aba0c16dffc",
+		"sku_uuid": "653180c0-a394-4e53-82a0-e1e307f6da35"
+      }
+    ]
+  }
