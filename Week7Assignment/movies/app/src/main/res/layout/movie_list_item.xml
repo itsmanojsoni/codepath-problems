@@ -45,11 +45,12 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop = "16dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movieOverview" />
+        app:layout_constraintTop_toBottomOf="@+id/posterImage" />
 
 </android.support.constraint.ConstraintLayout>
