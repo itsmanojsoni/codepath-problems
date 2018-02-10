@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.codepath.movies.presenter.MovieListPresenter;
 import com.codepath.movies.rest.ApiClient;
 import com.codepath.movies.rest.ApiInterface;
 import com.codepath.movies.model.Movie;
@@ -25,14 +26,17 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
 
 
     private static final String TAG = "MainActivity";
-    public final static String API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed";
+
     private List<Movie> movies = new ArrayList<>();
     private MovieAdapter movieAdapter;
+    private MovieListPresenter movieListPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        movieListPresenter = new MovieListPresenter(this);
 
         final RecyclerView recyclerView = findViewById(R.id.movies_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -45,22 +49,15 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
     @Override
     protected void onResume() {
         super.onResume();
-        ApiInterface apiService =
-                ApiClient.getClient().create(ApiInterface.class);
 
-        Call<MoviesResponse> call = apiService.getLatestMovies(API_KEY);
-        call.enqueue(new Callback<MoviesResponse>() {
+
+        movieListPresenter.loadMovieList(new MovieListPresenter.OnLoadMovieListListener() {
             @Override
-            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-                movies = response.body().getResults();
+            public void onLoadMovieListener(List<Movie> movieList) {
+                movies.clear();
+                movies.addAll(movieList);
                 movieAdapter.setData(movies);
                 movieAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<MoviesResponse> call, Throwable t) {
-                // Log error here since request failed
-                Log.e(TAG, t.toString());
             }
         });
     }

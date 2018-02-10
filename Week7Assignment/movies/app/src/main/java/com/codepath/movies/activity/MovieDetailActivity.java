@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.codepath.movies.activity.MainActivity.API_KEY;
+import static com.codepath.movies.presenter.MovieListPresenter.API_KEY;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
