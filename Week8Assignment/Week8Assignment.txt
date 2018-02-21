@@ -1,0 +1,247 @@
+1. What is the difference between abstract classes and interfaces?
+Ans: Interfaces are set of methods/contracts that a class can implement. Interfaces never have any implemented 
+while abstract class can have method implementation. Interfaces are less expensive to use as compare to abstract classes.
+
+2. Describe the value of an interface and why are they important?
+A: Interfaces are used for call backs implementation
+
+3. What are anonymous classes?
+A: anonymous classes are classes with just one method. In JAVA, we don't have functions without classes so 
+anonymous classes can be used for that 
+
+4.What is the difference between using == and .equals on a string?
+A.  if we are using == for string, it would compare object reference and not the contents of the object that 
+we want to compare so .equal method is used to do that. 
+
+5. What is composition and what is inheritance in object-oriented programming? Why would you use one over another?
+A: example of composition
+By composition, I simply mean using instance variables that are references to other objects. 
+class Fruit {
+	// ...
+}
+
+class Apple {
+
+    private Fruit fruit = new Fruit();
+    // ...    
+}
+
+
+In this example, Fruit is the superclass and Apple is the subclass.
+class Fruit {
+
+    //...
+}
+
+class Apple extends Fruit {
+
+    //...
+}
+
+
+
+
+6. What is polymorphism and give an example where this is useful?
+A: In this example, Fruit is the superclass and Apple is the subclass.
+Polymorphism means you can use a variable of a superclass type to hold a reference to an 
+object whose class is the superclass or any of its subclasses. For e.g. we can have many 
+fruit classes such as Orage, Banana etc which extends fruit. 
+class Fruit {
+
+    //...
+}
+
+class Apple extends Fruit {
+
+    //...    
+}
+
+
+
+7. When would you make an object value final? When you want to make an variable static?
+A: Object is final when we don't want any other class to inherit it. We want to make variable static 
+when we want single instance of it. 
+
+8. What is the difference between between method overloading and overriding?
+A: Overloading occurs when two or more methods in one class have the same method name but 
+different parameters.Overriding means having two methods with the same method name and
+ parameters (i.e., method signature). One of the methods is in the parent class and the 
+ other is in the child class. Overriding allows a child class to provide a specific 
+ implementation of a method that is already provided its parent class.
+
+
+9. What is serialization in Java (not Android)? How do you implement it? How about in Android?
+A: Serialization is a process of converting an Object into stream of bytes so that it can be
+transferred over a network or stored in a persistent storage. In android, we use 
+serialization to pass an object between android components such as activities and fragments. 
+
+
+10. Do objects get passed by reference or value in Java? Elaborate on that.
+A: Objects references are passed by value in java but Object References would point to the same object. 
+
+11. What are generics and why are they important in Java?
+A: Generics are mainly useful because of three reasons : 
+ 	i) Stronger type checking at compile time.
+ 	ii) Elimination of explicit cast.
+ 	iii) Enabling better code reusability such as implementation of generic algorithms
+ 	
+12. What is one design pattern that you use and find helpful in Java/Android?
+A: Singleton and build patter are the ones I use commonly. 
+
+Core Android:
+
+1. Explain Activity lifecycle including most notable events and the order they run. 
+A:  Creation events : onCreate -> onStart -> onResume
+	Destruction Events : onPause-> onStop-> onDestroy
+2. Explain Fragment lifecycle including most notable events and the order they run. 
+A: Fragment is added
+	onAttach-> onCreate -> onCreateView -> onActivitiesCreated -> onStart -> onResume-> Fragment is Active
+	
+	onPause-> onStop-> onDestroyViews-> onDetach-> Fragment is Destroyed
+	
+2. How would you preserve Activity state during a screen rotation?
+A: saving data into bundle state
+
+3. What are Intents and what are the major types? When would you use one over another?
+A: Intents are the objects to pass data around android components. There are main two types 
+of intents: i) explicit ii) implicit  
+We choose implicit over explicit when we want to communicate to another app/OS  from our app. 
+
+4. What is the difference between ListView and RecyclerView?
+A: ListView by default doesn't cache views while RecyuclerView does through ViewHolder. 
+
+5. What is the ViewHolder pattern? Why should we use it?'
+A: ViewHolder caches views that we can reuse later. 
+
+6. Explain all the major Android components (e.g activities, services, broadcast receivers, content providers)
+ and how they each are used in apps. 
+A:  i) Activities  - Activities are like each page that we see in the app. It can contain views and fragments.
+	ii) Services -  Performs task without User Interface
+	iii) Braodcast Receivers - used to listen system call
+	iv) Content Providers - Interface while sharing data between different apps and also between different components. 
+	
+	
+7. Explain the difference between Service, IntentService, and AsyncTask? When would you use one over another?
+A: Service : for long running task
+  Async Task : small background task
+  Intent Service : Subclass of Services. It works in a background working thread and we can extend Intent Service class 
+  to facilitate background opertaion. 
+  
+
+8. Explain what Looper, Handler and HandlerThread are and how they are used.
+A: Looper is what keeps a background thread alive even after a task is done.  
+Handler is used to post message/task to a message queue. Handler Thread is background thread on which handler operates. 
+
+9. Explain the difference between services and threads in Android? How and why are they used?
+A: Services can run even if the user closes the app but thread would not run. Threads lifecycle is tied to the application. 
+
+
+10. Why should you avoid running non-ui code on the main thread?
+A:  because of ANR (Android Not Responding)
+
+
+11. What are the options for persisting data in an Android app? When would you use the various different options available?
+A: Shared Preference, sqlite data base and files. 
+
+12. What is the difference between a fragment and an activity? Explain the relationship between the two.
+A: Multiple fragments can belong to the same activity. Fragments are useful for multipan UI. 
+
+13. How would you communicate between two Fragments? Describe the best practices for communication.
+A:  Two Fragments should pass data through newInstance methods using Bundle if we are passing objects. 
+
+14. What are "launch modes"? What are some common ways you might use launch modes.
+A: SingleTop and Standard.
+
+15. What is a BroadcastReceiver? What is a LocalBroadcastManager? What situations might you commonly use these?
+A:  Broadcast Receiver is used to listen to system events. It is used to lisent to push notification. 
+
+
+16. What is a ContentProvider and what is it typically used for? Would you commonly use them in an app, and if not, why not?
+A: Content Providers are mainly used to transfer data to other apps. 
+
+17. How do you handle Bitmaps in Android and what are common issues associated with them? How do you address these issues?
+A:  Bitmaps are large objects so we need to recycle them after we use them. 
+Also we should usually store compressed image (jpeg) and not bitmaps. 
+
+
+18. What is the function of an intent filter? When would you use them in an app?
+A: intent filter is something by which app can listen to implicit intents.
+
+Extended Android
+Research and answer the following extended Android questions:
+
+19. What is the difference JVM, DVM and ART?
+A: 
+20. Have you used ConstraintLayout and what do you think of it?
+A: ConstraintLayout is the new layout which is supposed to be efficient and should enable us to use flatter layouts. 
+
+21. What is the architecture you used for your last app? Describe how the files and components were organized and what worked well or could be improved.
+A: I prefer MVP. It helps in adding new functionality and helps in writing clean code. 
+
+22. What is Dependency Injection? Why is it useful? Can you name few libraries?
+A:  Dependency Injection is the ability to instantiate objects. Dagger2 is the most popular Dependency Injects.
+
+23. What do you think of RxJava? What are the benefits of using it? Are there any cons.
+A: RxJAVA is pretty good for asynchronous programming. Debugging is difficult. 
+
+
+24. What is Android Data Binding? Do you like using this in your apps, why or why not?
+A: I have not used much of Data Binding but seems pretty good when we want to update the UI without callbacks 
+when there is any data update. 
+
+25. What is an ORM? What ORM do you use? What is Room and how do you think this compares with other ORMs?  
+A: ORM is object relational mapper. it is used to map the JAVA object with the sqlite table data. 
+Room is pretty good I think as is has support to manage activity lifecycle. 
+
+26. What is a SurfaceView? Why would you use one?
+A:  Surface View is used to display video data. 
+
+27. What is overdraw? Why is this important and how do you fix this?
+
+28. Have you used Kotlin and what do you think of it?
+A: Kotlin is good. I have not used much except a side project.  Less code. 
+
+29. How to avoid memory leaks in Android? How to discover them?
+A: Leak Canary for memory leak. 
+
+30. Name 3 libraries that you like to use in apps and why?
+A: Retrofit, ButterKnife, sqlbrite, RxJAVA
+
+31. What’s a new Android SDK feature or API that was released recently that looked interesting or are playing with?
+A: Room
+
+32. What is a JobScheduler? How does this differ from other alternatives?
+A: JobScheduler is used to schedule a job. It is better than Alarm Manager. 
+
+33. How do you play sounds in Android?
+A: We can use Media Player or ExoPlayer. 
+
+34. Describe any experience or knowledge high level of unit testing. What is Espresso used for? What is Mockito used for? 
+What is the difference between unit and instrumented tests?
+A: Espresso used for UI testing
+Mockito is used to Mock the Objects. Instrumented tests are used when we want to run quick test without using android SDK. 
+
+
+35.What is obfuscation? What is it used for? What common tools enables this?
+A: Obfuscation is used so that the code can not be reverse engineered. ProGuard is used for that. 
+
+
+	
+	
+	
+
+
+
+
+
+
+	
+	
+	
+
+
+
+
+
+
+
